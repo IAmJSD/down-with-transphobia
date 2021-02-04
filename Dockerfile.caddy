@@ -1,5 +1,5 @@
 FROM caddy:2
 WORKDIR /var/app
 COPY . .
-RUN rm -rf vendor .git
+RUN rm -rf vendor .git composer.json composer.lock .dockerignore Dockerfile.caddy Dockerfile.php README.md .env
 CMD caddy run --config /var/app/Caddyfile
