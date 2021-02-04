@@ -30,6 +30,10 @@ $identifier = explode("@", $email)[0];
 $result = pg_query_params($pgConn, "SELECT email FROM letters WHERE id = $1", array($identifier));
 if ($result) {
     $row = pg_fetch_assoc($result);
+    if (!$row) {
+        echo "No email.";
+        exit;
+    }
     $email = new SendGrid\Mail\Mail();
     $email->setFrom($identifier . "@sg.jakegealer.me", "Down With Transphobia");
     $email->setSubject("Email from GOV.UK: " . $_POST["subject"]);
