@@ -17,8 +17,7 @@ if (!isset($_GET["key"]) || $_GET["key"] !== getenv("INBOUND_KEY")) {
 
 // Get the email this is to.
 $email = "";
-preg_match("/^.+ <(.+)>$/", $_POST["to"], $matches);
-if ($matches === null) {
+if (preg_match("/^.+ <(.+)>$/", $_POST["to"], $matches)) {
     $email = $_POST["to"];
 } else {
     $email = $matches[1];
