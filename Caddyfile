@@ -1,0 +1,6 @@
+down-with-transphobia.jakegealer.me
+
+file_server {
+    root /var/app
+}
+php_fastcgi php:9000

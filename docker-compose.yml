@@ -1,0 +1,28 @@
+version: "3.3"
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile.php
+    environment:
+      POSTGRES_CONNECTION_STRING: "postgresql://postgres:container@postgres/postgres"
+      INBOUND_KEY: "${INBOUND_KEY}"
+      SENDGRID_API_KEY: "${SENDGRID_API_KEY}"
+      HCAPTCHA_SECRET: "${HCAPTCHA_SECRET}"
+      HCAPTCHA_SITE_KEY: "${HCAPTCHA_SITE_KEY}"
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - php
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: container
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - /var/lib/postgresql/data:/var/lib/postgresql/data
