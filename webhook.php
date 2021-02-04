@@ -18,9 +18,9 @@ if (!isset($_GET["key"]) || $_GET["key"] !== getenv("INBOUND_KEY")) {
 // Get the email this is to.
 $email = "";
 if (preg_match("/^.+ <(.+)>$/", $_POST["to"], $matches)) {
-    $email = $_POST["to"];
-} else {
     $email = $matches[1];
+} else {
+    $email = $_POST["to"];
 }
 
 // Get the identifier.
