@@ -1,4 +1,7 @@
 <?php
+// Load compose.
+require "vendor/autoload.php";
+
 // Load the postgres connection.
 $pgConn = pg_connect(getenv("POSTGRES_CONNECTION_STRING"));
 
