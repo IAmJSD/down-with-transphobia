@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $html = nl2br(htmlspecialchars($str));
 
         // Create the sender ID.
-        $gen = uniqid($name . "_");
+        $gen = uniqid();
         pg_insert($pgConn, "letters", array("id" => $gen, "email" => $email), PGSQL_DML_ESCAPE);
         $senderId = $gen;
 
