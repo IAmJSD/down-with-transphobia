@@ -29,11 +29,11 @@ $identifier = explode("@", $email)[0];
 // Select from the database.
 $result = pg_query_params($pgConn, "SELECT email FROM letters WHERE id = $1", array($identifier));
 if ($result) {
-    $addr = pg_fetch_assoc($result)[0];
+    $row = pg_fetch_assoc($result);
     $email = new SendGrid\Mail\Mail();
     $email->setFrom($identifier . "@sg.jakegealer.me", "Down With Transphobia");
     $email->setSubject("Email from GOV.UK: " . $_POST["subject"]);
-    $email->addTo($addr, "");
+    $email->addTo($row["email"], "");
     $email->addContent("text/html", $_POST["html"]);
     $sendgrid->send($email);
 } else {
