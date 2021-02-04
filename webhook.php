@@ -9,7 +9,7 @@ $pgConn = pg_connect(getenv("POSTGRES_CONNECTION_STRING"));
 $sendgrid = new SendGrid(getenv("SENDGRID_API_KEY"));
 
 // Check the key.
-if ($_GET["key"] !== getenv("INBOUND_KEY")) {
+if (!isset($_GET["key"]) || $_GET["key"] !== getenv("INBOUND_KEY")) {
     http_response_code(400);
     echo "Invalid key.";
     exit;
