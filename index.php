@@ -72,9 +72,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Fill out the template.
         if ($additional_info !== "") $additional_info = "\n\n" . $additional_info;
         $str = strtr($letter, array(
-            "personal_experiences" => $additional_info,
-            "name" => $name,
-            "gender" => $gender
+            "\$personal_experiences" => $additional_info,
+            "\$name" => $name,
+            "\$gender" => $gender
         ));
 
         // Create email HTML with this.
