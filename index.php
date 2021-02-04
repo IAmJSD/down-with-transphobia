@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Create the sender ID.
         $gen = uniqid();
-        if (!pg_insert($pgConn, "letters", array("id" => $gen, "email" => $email), PGSQL_DML_ESCAPE)) throw new Exception(pg_last_error($pgConn));
+        if (!pg_insert($pgConn, "letters", array("id" => $gen, "email" => $email))) throw new Exception(pg_last_error($pgConn));
         $senderId = $gen;
 
         // Send the e-mail.
