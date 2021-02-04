@@ -28,7 +28,7 @@ if (preg_match("/^.+ <(.+)>$/", $_POST["to"], $array) === false) {
 $identifier = explode("@", $email)[0];
 
 // Select from the database.
-$result = pg_query_params($pgConn, "SELECT email FROM letters WHERE id = $1", $identifier);
+$result = pg_query_params($pgConn, "SELECT email FROM letters WHERE id = $1", array($identifier));
 if ($result) {
     $addr = pg_fetch_assoc($result)[0];
     $email = new SendGrid\Mail\Mail();
