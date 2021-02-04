@@ -27,7 +27,7 @@ $name
 ';
 
 // Load compose.
-require "vendor/autoload.php";
+require "../vendor/autoload.php";
 
 // Load the postgres connection.
 $pgConn = pg_connect(getenv("POSTGRES_CONNECTION_STRING"));
@@ -207,6 +207,6 @@ A <a href="https://docs.google.com/document/d/1cZ4Vw4rfVV2GqF4y3cToIHApxGhpoop38
         </div>
         <script>window.letter = <?php echo json_encode($letter); ?>;</script>
         <script src="https://hcaptcha.com/1/api.js" async defer></script>
-        <script src="/preview.js"></script>
+        <script src="/root/preview.jsew.js"></script>
     </body>
 </html>
