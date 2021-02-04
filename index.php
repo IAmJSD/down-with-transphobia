@@ -83,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Create the sender ID.
         $gen = uniqid($name . "_");
         pg_insert($pgConn, "letters", array("id" => $gen, "email" => $email), PGSQL_DML_ESCAPE);
+        $senderId = $gen;
 
         // Send the e-mail.
         $email = new SendGrid\Mail\Mail();
