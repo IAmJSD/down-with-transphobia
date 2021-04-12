@@ -207,6 +207,6 @@ A <a href="https://docs.google.com/document/d/1cZ4Vw4rfVV2GqF4y3cToIHApxGhpoop38
         </div>
         <script>window.letter = <?php echo json_encode($letter); ?>;</script>
         <script src="https://hcaptcha.com/1/api.js" async defer></script>
-        <script src="/root/preview.jsew.js"></script>
+        <script src="/preview.js"></script>
     </body>
 </html>
